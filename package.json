@@ -1,0 +1,16 @@
+{
+  "name": "dropdown-menu",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "menu",
+    "dropdown",
+    "ui"
+  ],
+  "author": "ZezinhoTwo",
+  "license": "ISC",
+  "description": "Um menu suspenso personalizável"
+}

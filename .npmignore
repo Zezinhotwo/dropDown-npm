@@ -1,0 +1,6 @@
+tests/        
+dist/         
+
+.gitignore      
+.npmignore      
+*.log       
