@@ -3,50 +3,111 @@
     padding: 0;
     margin: 0;
 }
+
 body {
     background-color: #444;
+    font-family: Arial, sans-serif;
+    color: white;
 }
+
 nav {
     background-color: blue;
     height: 70px;
     display: flex;
     align-items: center;
-    padding-left: 2em;
+    padding: 0 2em;
+
     .item-menu {
-        position: absolute;
-        top: 1em;
         display: flex;
         list-style: none;
-        // gap: 0.2em;
+        position: relative;
+        gap: 1em;
         cursor: pointer;
+
         & > li {
-            // background-color: white;
             padding: 1em 2em;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+            position: relative; // Define como referência para dropdown
+
+            &:hover {
+                background-color: rgba(253, 253, 253, 0.3);
+                border-bottom: 1px solid white;
+                color: white;
+            }
+
+            // Estilos para o dropdown
+            .dropdown-hide {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                padding: 12px 16px;
+                z-index: 1;
+                li {
+                    padding: 10px 15px;
+                    white-space: nowrap;
+                    transition: background 0.3s ease;
+
+                    &:hover {
+                        background-color: rgba(253, 253, 253, 0.3);
+                        color: white;
+                    }
+                }
+            }
         }
-        & > li:hover {
-            background-color: rgba(253, 253, 253, 0.466);
-            border-bottom: 1px inset white;
+    }
+}
+
+// Faz o dropdown aparecer corretamente ao ativar a classe
+.dropdown-active {
+    position: absolute;
+    list-style: none;
+    top: 100%;
+    right: 0%;
+    background-color: #be0e0e;
+    // padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+}
+.dropdown-menu {
+ 
+    & ul {
+        padding: 1em 2em;
+        & li:hover {
+            background-color: rgba(253, 253, 253, 0.3);
             color: white;
         }
     }
 }
-.dropdown-active {
-    background-color: red;
-    list-style: none;
-    & > li {
-        padding: 1em 2em;
+
+// Responsividade para telas menores
+@media (max-width: 768px) {
+    nav {
+        height: auto;
+        flex-direction: column;
+        padding: 1em;
     }
-    & > li:hover {
-        background-color: rgba(253, 253, 253, 0.466);
-        border-bottom: 1px inset white;
-        color: rgb(255, 0, 0);
+
+    .item-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+
+        & > li {
+            width: 100%;
+            text-align: left;
+            padding: 0.8em 1.5em;
+        }
+
+        .dropdown-hide {
+            position: absolute;
+            width: 100%;
+        }
     }
-}
-.dropdown-hide {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    padding: 10px;
-    min-width: 150px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
